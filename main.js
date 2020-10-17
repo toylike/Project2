@@ -128,7 +128,6 @@ function showModalSingUp(){
 }
 
 
-
 function addItem(){
   let labelCompare = document.querySelector('.labelCompare');
   let labelSelect = document.querySelector('.labelSelect');
@@ -150,3 +149,35 @@ function addItem(){
     labelBasket.firstElementChild.innerHTML++;
   }
 }
+
+
+
+
+let burgerMenuButton = document.querySelector('.burger_button');
+let navBurgerMenu = document.querySelector('.b_nav_menu');
+let burgerMenu = document.querySelector('.b_nav_burger');
+
+function checkDropMenu(x){
+
+  if(x.matches){
+    navBurgerMenu.style.display = 'none';
+    burgerMenuButton.addEventListener('click', dropMenu);
+    burgerMenu.classList.remove('burger_menu_active');
+  }else{
+    navBurgerMenu.style.display = 'block';
+  }
+  }
+
+  function dropMenu(){
+  if(burgerMenu.classList.contains('burger_menu_active')){
+    navBurgerMenu.style.display = 'none';
+    burgerMenu.classList.remove('burger_menu_active');
+  }else{
+    burgerMenu.classList.add('burger_menu_active');
+    navBurgerMenu.style.display = 'block';
+  }
+}
+
+let x = window.matchMedia("(max-width: 600px)")
+checkDropMenu(x)
+x.addListener(checkDropMenu)
